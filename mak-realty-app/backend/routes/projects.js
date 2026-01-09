@@ -458,8 +458,8 @@ async function getUniqueProjectName(projectName, developerName, location) {
 // Create project (manual upload)
 router.post('/', authenticateToken, [
   body('project_name').notEmpty().trim(),
-  body('budget_min').optional().isFloat({ min: 0 }),
-  body('budget_max').optional().isFloat({ min: 0 }),
+  body('budget_min').optional({ nullable: true, checkFalsy: true }).isFloat({ min: 0 }),
+  body('budget_max').optional({ nullable: true, checkFalsy: true }).isFloat({ min: 0 }),
   body('configurations').optional().isArray()
 ], async (req, res) => {
   try {
