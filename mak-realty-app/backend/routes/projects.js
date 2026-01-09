@@ -529,8 +529,8 @@ router.post('/', authenticateToken, [
       isDuplicate
     });
   } catch (error) {
-    console.error('Create project error:', error);
-    res.status(500).json({ error: 'Server error during project creation' });
+    console.error('Create project error:', error.message, error.stack);
+    res.status(500).json({ error: 'Server error during project creation', details: error.message });
   }
 });
 
