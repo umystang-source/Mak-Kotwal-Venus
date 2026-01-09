@@ -1428,6 +1428,15 @@ const SearchPage = () => {
                       rows="3"
                     />
                   </div>
+                  <div className="form-group">
+                    <label>Client Tags (comma separated)</label>
+                    <input
+                      type="text"
+                      value={editedProject?.client_requirement_tags?.join(', ') || ''}
+                      onChange={(e) => handleEditChange('client_requirement_tags', e.target.value.split(',').map(t => t.trim()).filter(t => t))}
+                      placeholder="e.g., Family, Investment, Luxury"
+                    />
+                  </div>
 
                   {/* Additional Details Edit Section - Admin Only */}
                   {isAdmin() && (
