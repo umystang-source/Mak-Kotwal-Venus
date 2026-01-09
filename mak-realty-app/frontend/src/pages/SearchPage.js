@@ -1412,6 +1412,39 @@ const SearchPage = () => {
                     </div>
                   </div>
                   <div className="form-group">
+                    <label>Configurations</label>
+                    <div className="checkbox-group edit-checkbox-group">
+                      {configOptions.map(opt => (
+                        <label key={opt} className="checkbox-label">
+                          <input
+                            type="checkbox"
+                            checked={editedProject?.configurations?.includes(opt) || false}
+                            onChange={(e) => {
+                              const current = editedProject?.configurations || [];
+                              if (e.target.checked) {
+                                handleEditChange('configurations', [...current, opt]);
+                              } else {
+                                handleEditChange('configurations', current.filter(c => c !== opt));
+                              }
+                            }}
+                          />
+                          <span>{opt}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>Availability Status</label>
+                    <select
+                      value={editedProject?.availability_status || 'Ready'}
+                      onChange={(e) => handleEditChange('availability_status', e.target.value)}
+                    >
+                      {statusOptions.map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-group">
                     <label>Google Maps Link</label>
                     <input
                       type="url"
@@ -2880,6 +2913,46 @@ const SearchPage = () => {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1rem;
+        }
+
+        .edit-checkbox-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .edit-checkbox-group .checkbox-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 0.75rem;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .edit-checkbox-group .checkbox-label:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .edit-checkbox-group .checkbox-label:has(input:checked) {
+          background: rgba(45, 74, 62, 0.2);
+          border-color: rgba(45, 74, 62, 0.5);
+        }
+
+        .edit-checkbox-group .checkbox-label input[type="checkbox"] {
+          width: 16px;
+          height: 16px;
+          accent-color: #2d4a3e;
+          cursor: pointer;
+        }
+
+        .edit-checkbox-group .checkbox-label span {
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.8);
         }
 
         .attributes-edit-section {
