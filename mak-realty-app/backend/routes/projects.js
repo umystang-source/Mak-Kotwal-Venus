@@ -562,7 +562,7 @@ router.post('/bulk-upload', authenticateToken, upload.single('file'), async (req
           location: row['Location'] || row.location,
           plot_size: row['Plot Size'] || row.plot_size,
           total_towers: parseInt(row['Total Towers'] || row.total_towers) || null,
-          total_floors: parseInt(row['Total Floors'] || row.total_floors) || null,
+          total_floors: row['Total Floors'] || row.total_floors || null,
           possession: row['Possession'] || row.possession,
           budget_min: parseFloat(row['Budget Min'] || row.budget_min) || null,
           budget_max: parseFloat(row['Budget Max'] || row.budget_max) || null,
