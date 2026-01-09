@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   Building2, Search, Upload, LogOut, User, Shield,
-  FileSpreadsheet, Sparkles, ArrowRight, Users, Smartphone
+  Sparkles, ArrowRight, Users, Smartphone
 } from 'lucide-react';
 
 const DashboardPage = () => {
@@ -178,15 +178,6 @@ const DashboardPage = () => {
           </div>
         )}
 
-        <div className="quick-stats">
-          <div className="stat-card">
-            <FileSpreadsheet size={24} />
-            <div className="stat-info">
-              <span className="stat-label">Excel Template</span>
-              <a href="/template.xlsx" className="stat-action">Download</a>
-            </div>
-          </div>
-        </div>
       </main>
 
       <style>{`
