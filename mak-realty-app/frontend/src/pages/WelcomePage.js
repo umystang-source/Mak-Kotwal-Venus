@@ -25,7 +25,7 @@ const WelcomePage = () => {
           </div>
           <h1 className="logo-text">
             <span className="logo-main">MAK</span>
-            <span className="logo-sub">Kotwal Realty</span>
+            <span className="logo-sub">Kotwal Venus</span>
           </h1>
         </div>
 
