@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment files
+.env
+*.env.local
+
+# Build outputs
+build/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+nul
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Uploads (keep folder but not contents)
+uploads/*
+!uploads/.gitkeep
+
+# Claude config
+.claude/

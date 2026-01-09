@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: mak-realty-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mak_realty_user
+      POSTGRES_PASSWORD: tuhFmfqJ8YWi5RMltnfI
+      POSTGRES_DB: mak_realty
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mak_realty_user -d mak_realty"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mak-realty-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_URL: postgresql://mak_realty_user:tuhFmfqJ8YWi5RMltnfI@postgres:5432/mak_realty
+      DATABASE_SSL: "false"
+      JWT_SECRET: tGqJZu1Y9Gd9GZEzxMn4ZTaVgYQtPpDd
+      FRONTEND_URL: http://13.201.225.147
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: http://13.201.225.147
+    container_name: mak-realty-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  uploads_data:
