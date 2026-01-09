@@ -77,6 +77,41 @@ ul, ol {
   outline-offset: 2px;
 }
 
+/* Dark theme for all select dropdowns */
+select {
+  background-color: #1a1a2e !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a962' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+select:focus {
+  border-color: rgba(201, 169, 98, 0.5) !important;
+  outline: none;
+}
+
+select option {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 10px;
+}
+
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: #2d4a3e;
+  color: #fff;
+}
+
 /* Utility classes */
 .sr-only {
   position: absolute;

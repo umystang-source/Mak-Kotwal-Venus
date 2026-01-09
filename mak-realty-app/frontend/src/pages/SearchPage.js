@@ -1341,9 +1341,10 @@ const SearchPage = () => {
                     <div className="form-group">
                       <label>Total Floors</label>
                       <input
-                        type="number"
+                        type="text"
                         value={editedProject?.total_floors || ''}
-                        onChange={(e) => handleEditChange('total_floors', parseInt(e.target.value) || null)}
+                        onChange={(e) => handleEditChange('total_floors', e.target.value || null)}
+                        placeholder="e.g. G+14 or 15"
                       />
                     </div>
                   </div>

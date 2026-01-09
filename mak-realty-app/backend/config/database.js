@@ -38,7 +38,7 @@ const initDB = async () => {
         location VARCHAR(255),
         plot_size VARCHAR(255),
         total_towers INTEGER,
-        total_floors INTEGER,
+        total_floors VARCHAR(255),
         possession VARCHAR(255),
         budget_min DECIMAL(15, 2),
         budget_max DECIMAL(15, 2),
@@ -83,7 +83,7 @@ const initDB = async () => {
           ALTER TABLE projects ADD COLUMN total_towers INTEGER;
         END IF;
         IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='projects' AND column_name='total_floors') THEN
-          ALTER TABLE projects ADD COLUMN total_floors INTEGER;
+          ALTER TABLE projects ADD COLUMN total_floors VARCHAR(255);
         END IF;
         IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='projects' AND column_name='possession') THEN
           ALTER TABLE projects ADD COLUMN possession VARCHAR(255);

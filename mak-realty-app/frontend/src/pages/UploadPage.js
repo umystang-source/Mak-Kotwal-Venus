@@ -81,7 +81,7 @@ const UploadPage = () => {
       const projectData = {
         ...formData,
         total_towers: formData.total_towers ? parseInt(formData.total_towers) : null,
-        total_floors: formData.total_floors ? parseInt(formData.total_floors) : null,
+        total_floors: formData.total_floors || null,
         budget_min: formData.budget_min ? parseFloat(formData.budget_min) : null,
         budget_max: formData.budget_max ? parseFloat(formData.budget_max) : null,
         carpet_area_min: formData.carpet_area_min ? parseInt(formData.carpet_area_min) : null,
@@ -225,7 +225,7 @@ const UploadPage = () => {
                 </div>
                 <div className="form-group">
                   <label>Total Floors</label>
-                  <input type="number" name="total_floors" value={formData.total_floors} onChange={handleFormChange} placeholder="Number of floors" />
+                  <input type="text" name="total_floors" value={formData.total_floors} onChange={handleFormChange} placeholder="e.g. G+14 or 15" />
                 </div>
                 <div className="form-group">
                   <label>Possession</label>
